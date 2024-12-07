@@ -1,18 +1,13 @@
 <script setup>
-
+  import NavbarComp from './components/Navbar.vue'
+  import data from './assets/portfolio';
 </script>
 
 <template>
-  <div class="parent">
-    <h1 class="display-1">App</h1>
-    <button class="btn btn-primary">button</button>
-  </div>
-  <h1>heading 1</h1>
+  <NavbarComp />
+  <router-view :data="data" />
 </template>
 
 <style scoped lang="scss">
-  .parent {
-    h1 { color: red; }
-    button { color: blueviolet; }
-  }
+
 </style>
