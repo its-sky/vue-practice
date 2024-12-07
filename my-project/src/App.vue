@@ -1,30 +1,33 @@
 <script setup>
-import HelloWorld from './components/HelloWorld.vue'
+  import { onMounted, ref, watch } from 'vue';
+  import ChildComp from './components/ChildComp.vue';
+
+  let count = ref(0);
+  let title = "Hello Vue";
+  let color = ref('green');
+
+  onMounted(() => {
+    console.log('mounted');
+  })
+
+  const increaseCount = () => {
+    ++count.value;
+  }
+
+  watch(color, () => {
+    console.log('color 변경');
+  })
 </script>
 
 <template>
-  <div>
-    <a href="https://vite.dev" target="_blank">
-      <img src="/vite.svg" class="logo" alt="Vite logo" />
-    </a>
-    <a href="https://vuejs.org/" target="_blank">
-      <img src="./assets/vue.svg" class="logo vue" alt="Vue logo" />
-    </a>
-  </div>
-  <HelloWorld msg="Vite + Vue" />
+  <h1>{{ title }}</h1>
+  <button @click="increaseCount">count</button>
+  <p>{{ count }}</p>
+  <ChildComp :color="color" bgColor="yellow" />
+  <button @click="color='red'">change color</button>
+
 </template>
 
-<style scoped>
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.vue:hover {
-  filter: drop-shadow(0 0 2em #42b883aa);
-}
+<style>
+
 </style>
