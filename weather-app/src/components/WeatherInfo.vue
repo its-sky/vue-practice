@@ -1,14 +1,18 @@
 <template>
 	<div class="weather-info">
-		<div class="icon">icon</div>
-		<div class="temp">temp</div>
-		<div class="text">text</div>
-		<div class="location">location</div>
+		<div class="icon">
+			<img :src="`https://openweathermap.org/img/wn/${props.weatherData.icon}@2x.png`" :alt="props.weatherData.icon">
+		</div>
+		<div class="temp">{{ (props.weatherData.temp - 273.15).toFixed(1) }}&deg;</div>
+		<div class="text">{{ props.weatherData.text }}</div>
+		<div class="location">{{ props.weatherData.city }}, {{ props.weatherData.location }}</div>
 	</div>
 </template>
 
-<script setup lang='ts'>
-
+<script setup>
+	const props = defineProps({
+		weatherData: Object,
+	})
 </script>
 
 <style lang="scss">
