@@ -1,6 +1,8 @@
 <template>
 		<nav class="navbar">
-			<button class="toggle">
+			<button
+				class="toggle"
+				@click="$store.commit('toggleButton')">
 				<font-awesome-icon :icon="['fas', 'bars-staggered']" />
 			</button>
 		</nav>
@@ -26,7 +28,7 @@
 
 		.icon {
 			color: #333;
-			font-size: 2px;
+			font-size: 24px;
 		}
 	}
 </style>
